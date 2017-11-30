@@ -11,3 +11,32 @@ openssl = "0.9.21"
 
 [lib]
 path = "fake_lib.rs"
+
+[raze]
+workspace_path = "//cargo"
+
+[raze.crates.openssl-sys.'0.9.21']
+additional_flags = [
+  # Vendored openssl is 1.0.2m
+  "--cfg=ossl102",
+  "--cfg=version=102",
+]
+additional_deps = [
+  "//third_party/openssl:crypto",
+  "//third_party/openssl:ssl",
+]
+
+[raze.crates.openssl.'0.9.21']
+additional_flags = [
+  # Vendored openssl is 1.0.2m
+  "--cfg=ossl102",
+  "--cfg=version=102",
+  "--cfg=ossl10x",
+]
+
+[raze.crates.unicase.'2.1.0']
+additional_flags = [
+  # Rustc is 1.15, enable all optional settings
+  "--cfg=__unicase__iter_cmp",
+  "--cfg=__unicase__defauler_hasher",
+]
