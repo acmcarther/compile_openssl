@@ -13,20 +13,20 @@ load(
     "rust_bench_test",
 )
 
-
 rust_library(
     name = "foreign_types",
     crate_root = "src/lib.rs",
     srcs = glob(["**/*.rs"]),
     deps = [
-    "//cargo/vendor/foreign-types-shared-0.1.0:foreign_types_shared",
+        "//cargo/vendor/foreign-types-shared-0.1.0:foreign_types_shared",
+        
     ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    
     crate_features = [
-      
+        
     ],
 )

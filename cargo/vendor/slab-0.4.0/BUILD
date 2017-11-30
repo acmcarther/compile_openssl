@@ -3,7 +3,6 @@ cargo-raze crate build file.
 
 DO NOT EDIT! Replaced on runs of cargo-raze
 """
-
 package(default_visibility = ["//cargo:__subpackages__"])
 
 load(
@@ -16,14 +15,19 @@ load(
 
 rust_library(
     name = "slab",
-    srcs = glob(["**/*.rs"]),
-    crate_features = [
-    ],
     crate_root = "src/lib.rs",
+    srcs = glob(["**/*.rs"]),
+    deps = [
+        
+        
+    ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    deps = [
+    crate_features = [
+        
     ],
 )
+# Unsupported target "slab" with type "test" omitted

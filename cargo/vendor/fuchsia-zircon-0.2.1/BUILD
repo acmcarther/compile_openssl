@@ -13,20 +13,20 @@ load(
     "rust_bench_test",
 )
 
-
 rust_library(
     name = "fuchsia_zircon",
     crate_root = "src/lib.rs",
     srcs = glob(["**/*.rs"]),
     deps = [
-    "//cargo/vendor/fuchsia-zircon-sys-0.2.0:fuchsia_zircon_sys",
+        "//cargo/vendor/fuchsia-zircon-sys-0.2.0:fuchsia_zircon_sys",
+        
     ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    
     crate_features = [
-      
+        
     ],
 )

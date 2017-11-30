@@ -13,43 +13,22 @@ load(
     "rust_bench_test",
 )
 
-
-# NOTE: Benchmark may not function correctly: Development dependencies will be absent
-# TODO(acmcarther/cargo-raze/issues/7): Extend this with dev dependencies
-rust_bench_test(
-    name = "bench",
-    crate_root = "benches/bench.rs",
-    srcs = glob(["**/*.rs"]),
-    deps = [
-    ":byteorder",
-    
-    
-    ],
-    rustc_flags = [
-        "--cap-lints allow",
-        "--target=x86_64-unknown-linux-gnu",
-    ],
-    
-    crate_features = [
-      "default",
-      "std",
-    ],
-    visibility = ["//visibility:private"],
-)
+# Unsupported target "bench" with type "bench" omitted
 rust_library(
     name = "byteorder",
     crate_root = "src/lib.rs",
     srcs = glob(["**/*.rs"]),
     deps = [
-    
+        
+        
     ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    
     crate_features = [
-      "default",
-      "std",
+        "default",
+        "std",
     ],
 )

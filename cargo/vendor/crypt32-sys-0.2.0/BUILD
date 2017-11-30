@@ -13,35 +13,6 @@ load(
     "rust_bench_test",
 )
 
-rust_binary(
-    name = "crypt32_sys_build_script",
-    srcs = glob(["*", "**/*.rs"]),
-    crate_root = "build.rs",
-    deps = [
-      "//cargo/vendor/winapi-build-0.1.1:winapi_build",
-    ]
-    rustc_flags = [
-        "--cap-lints allow",
-        "--target=x86_64-unknown-linux-gnu"
-    ],
-    
-    visibility = ["//visibility:private"],
-)
-
-genrule(
-    name = "crypt32_sys_build_script_executor",
-    srcs = glob(["*", "**/*.rs"]),
-    outs = ["crypt32_sys_out_dir_outputs.tar.gz"],
-    tools = [":crypt32_sys_build_script"],
-    cmd = "mkdir crypt32_sys_out_dir_outputs/;"
-        + " (export CARGO_MANIFEST_DIR=\"$$PWDcargo/vendor/crypt32-sys-0.2.0\";"
-        + " export TARGET='x86_64-unknown-linux-gnu';"
-        + " export RUST_BACKTRACE=1;"
-        + " export OUT_DIR=$$PWD/crypt32_sys_out_dir_outputs;"
-        + " export BINARY_PATH=\"$$PWD/$(location :crypt32_sys_build_script\";"
-        + " export OUT_TAR=$$PWD/$@;"
-        + " cd $$(dirname $(location :Cargo.toml)) && $$BINARY_PATH && tar -czf $$OUT_TAR -C $$OUT_DIR .)"
-)
 alias(
   name = "crypt32_sys",
   actual = ":crypt32",
@@ -52,14 +23,15 @@ rust_library(
     crate_root = "src/lib.rs",
     srcs = glob(["**/*.rs"]),
     deps = [
-    "//cargo/vendor/winapi-0.2.8:winapi",
+        "//cargo/vendor/winapi-0.2.8:winapi",
+        
     ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    
     crate_features = [
-      
+        
     ],
 )

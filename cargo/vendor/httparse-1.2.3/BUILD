@@ -13,43 +13,22 @@ load(
     "rust_bench_test",
 )
 
-
 rust_library(
     name = "httparse",
     crate_root = "src/lib.rs",
     srcs = glob(["**/*.rs"]),
     deps = [
-    
+        
+        
     ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    
     crate_features = [
-      "default",
-      "std",
+        "default",
+        "std",
     ],
 )
-# NOTE: Benchmark may not function correctly: Development dependencies will be absent
-# TODO(acmcarther/cargo-raze/issues/7): Extend this with dev dependencies
-rust_bench_test(
-    name = "parse",
-    crate_root = "benches/parse.rs",
-    srcs = glob(["**/*.rs"]),
-    deps = [
-    ":httparse",
-    
-    
-    ],
-    rustc_flags = [
-        "--cap-lints allow",
-        "--target=x86_64-unknown-linux-gnu",
-    ],
-    
-    crate_features = [
-      "default",
-      "std",
-    ],
-    visibility = ["//visibility:private"],
-)
+# Unsupported target "parse" with type "bench" omitted

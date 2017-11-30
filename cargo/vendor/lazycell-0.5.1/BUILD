@@ -13,20 +13,20 @@ load(
     "rust_bench_test",
 )
 
-
 rust_library(
     name = "lazycell",
     crate_root = "src/lib.rs",
     srcs = glob(["**/*.rs"]),
     deps = [
-    
+        
+        
     ],
     rustc_flags = [
         "--cap-lints allow",
         "--target=x86_64-unknown-linux-gnu",
+        
     ],
-    
     crate_features = [
-      
+        
     ],
 )
